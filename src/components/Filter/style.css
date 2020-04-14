@@ -1,0 +1,40 @@
+.search-sort{
+    display: flex;
+    margin-bottom: 30px;
+}
+form{
+    ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+label{
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+input,select{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 5px;
+    outline: none;
+    width: 100%;
+    max-width: 250px;
+}
+input[type='checkbox']{
+    width:40px;
+}
+button{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 5px;
+    outline: none;
+    background: #efefef;
+    border: 1px solid  #efefef;
+}
+select{
+    align-self: flex-end;
+    height: 50px;
+}

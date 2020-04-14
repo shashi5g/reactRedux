@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  img{
+      width: 100%;
+      max-width:100%;
+  }
+  .plp{
+      width: 100%;
+      display: flex
+  }
+  .left{
+  
+      width: 20%;
+    padding-right: 50px;
+  }
+  .right{
+      width: 80%;
+  }
+  .flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background:rgba(0,0,0, .5);
+    padding: 10px;
+  }
+  
+  .flex-wrapper img{
+
+    display: block;
+    border-radius: 10px 10px 0 0;
+  }
+  .flex-wrapper > li {
+    width: 100%;
+    max-width: 25%;
+    padding: 10px;
+    /* border: 1px solid pink; */
+    list-style: none;
+  }
+
+  h3{
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: #fff
+}
+span{
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: #fff;
+}
+.card{
+  position: relative;
+}
+
+.card-title{
+  position: absolute;
+  padding:10px;
+  opacity: .5;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,.7);
+
+}
+.card-desc{
+  background: rgba(0,0,0,.6);
+  padding-top: 20px;
+  padding-bottom: 30px;
+  border-radius: 0 0 10px 10px;
+  min-height: 300px;
+}
+
+.card-desc li {
+  list-style: none;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.7);
+  display: flex;
+}
+.card-desc li span{
+  color:orange
+}
+.card-desc li span:first-child {
+ text-transform: uppercase;
+ flex: 1 1 0;
+ color: white;
+}
+.card-desc li span{
+  margin-bottom: 0;
+}
+.card-desc li:last-child{
+  border-bottom: 0;
+}

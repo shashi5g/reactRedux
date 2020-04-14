@@ -1,0 +1,2 @@
+export const  LOAD_CHRACTER_LIST = "LOAD_CHRACTER_LIST"
+export const SORT_BY_PRICE ='SORT_BY_PRICE'

@@ -1,0 +1,16 @@
+h2{
+    margin-bottom: 15px;
+}
+.left h3{
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: black;
+}
+.species,.gender,.origin{
+    padding: 20px;
+    border: 1px solid gray;
+    margin-bottom: 30px;
+}
