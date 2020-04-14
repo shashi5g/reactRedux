@@ -1,0 +1,2 @@
+export const  LOAD_SEARCH_ITEMS = "LOAD_SEARCH_ITEMS"
+export const SET_SEARCH_TERM ='SET_SEARCH_TERM'

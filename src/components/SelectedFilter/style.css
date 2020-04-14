@@ -1,0 +1,22 @@
+.selected-list {
+    margin-bottom: 20px;
+}
+.selected-list ul{
+    display: flex;
+    flex-direction: row;
+}
+.selectedItem{
+    background: rgba(0,0,0,.5);
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.selectedItem span{
+    color:white
+}
+.selectedItem button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
