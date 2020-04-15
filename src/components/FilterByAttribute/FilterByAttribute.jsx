@@ -36,58 +36,37 @@ class FilterByAttribute extends React.PureComponent {
       this.props.removeCheckbox(filterList)
     } 
   }
+  
+  renderFilter(filtertype){
+
+    return <div className={filtertype[0].type.toLowerCase()} key={Math.random()}>
+        <h3>{filtertype[0].type}</h3>
+       {filtertype.length &&  filtertype.map((item, i) => {
+       return <label htmlFor={item.name}>
+                  <input type="checkbox" name={item.name} id={item.name} value={item.name} checked={item.isChecked} onChange={(e) => this.handleFilterBrand(e)} />
+                  {item.label}</label>})}
+       </div>
+
+  }
 
   render() {
   const  {filterList} = this.state;
   const species = filterList && filterList.filter((item)=>{
-    return item.type==='Species'
+    return item && item.type==='Species'
   })
   const gender = filterList && filterList.filter((item)=>{
-    return item.type==='Gender'
+    return item && item.type==='Gender'
   })
   const origin = filterList && filterList.filter((item)=>{
-    return item.type==='Origin'
+    return item && item.type==='Origin'
   })
 
     return (
       <React.Fragment>
        <h2>{"Filter"}</h2>
-       {species.length && <div className='species' key={Math.random()}>
-        <h3>{species[0].type}</h3>
-       {species.length &&  species.map((item, i) => {
-       return <label htmlFor={item.name}>
-                  <input type="checkbox" name={item.name} id={item.name} value={item.name} checked={item.isChecked} onChange={(e) => this.handleFilterBrand(e)} />
-                  {item.label}</label>
-           
-        
-                  
-      })}
-      </div>}
-
-      {gender.length && <div className='species' key={Math.random()}>
-        <h3>{gender[0].type}</h3>
-       {gender.length &&  gender.map((item, i) => {
-       return <label htmlFor={item.name}>
-                  <input type="checkbox" name={item.name} id={item.name} value={item.name} checked={item.isChecked} onChange={(e) => this.handleFilterBrand(e)} />
-                  {item.label}</label>
-           
-        
-                  
-      })}
-      </div>}
-
-      {origin.length && <div className='species' key={Math.random()}>
-        <h3>{origin[0].type}</h3>
-       {origin.length &&  origin.map((item, i) => {
-       return <label htmlFor={item.name}>
-                  <input type="checkbox" name={item.name} id={item.name} value={item.name} checked={item.isChecked} onChange={(e) => this.handleFilterBrand(e)} />
-                  {item.label}</label>
-           
-        
-                  
-      })}
-      </div>}
-
+       {species.length > 0 && this.renderFilter(species)}
+       {gender.length > 0 && this.renderFilter(gender)}
+       {origin.length > 0 && this.renderFilter(origin)}
       </React.Fragment>
      ) 
   }
