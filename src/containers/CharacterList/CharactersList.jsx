@@ -1,12 +1,10 @@
 import React from'react';
 import {connect } from 'react-redux'
 import {getCharacter,getFilterLIst} from './selector'
-// import {getFilterLIst} from '../Filters/selector'
 import {loadCharacterList} from './action'
-import CharactersListComp from '../../components/CharactersListComp.jsx'
-import Filters from '../Filters/Filters'
 import {removeCheckboxFilter} from '../Filters/action'
-import SelectedFilter from '../../components/SelectedFilter/SelectedFilter'
+
+import Layout from '../common/Layout';
 
 // import icons from 'glyphicons'
 
@@ -28,13 +26,7 @@ class CharactersList extends React.PureComponent {
 }
 
   render(){
-    return <div className='plp'>
-              <div className="left"><Filters/></div>
-                <div className="right">  
-                 <SelectedFilter filterData= {this.props.filters ?this.props.filters.filterList:[]} removeFiterItem={this.props.removeFiterItem}/>
-                <CharactersListComp  {...this.props}/>
-              </div>
-          </div>
+    return <Layout {...this.props} />
           
       }
     

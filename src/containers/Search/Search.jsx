@@ -3,10 +3,8 @@ import {connect } from 'react-redux'
 import axios from 'axios';
 import {loadCharacterList} from '../CharacterList/action'
 import {getCharacter,getFilterLIst} from '../CharacterList/selector'
-import CharactersListComp from '../../components/CharactersListComp'
-import Filters from '../Filters/Filters'
+import Layout from '../common/Layout';
 import {removeCheckboxFilter} from '../Filters/action'
-import SelectedFilter from '../../components/SelectedFilter/SelectedFilter'
 // import icons from 'glyphicons'
 
 class Search extends React.PureComponent {
@@ -14,29 +12,31 @@ class Search extends React.PureComponent {
     super(props)
     this.state={
     }
+    this.renderData = this.renderData.bind(this)
   }
  componentDidMount(){
-  const url =`https://rickandmortyapi.com/api/character/`;
-  const modifyUrl = this.props.props.selectedShow ? `${url}?name=${this.props.props.selectedShow}`:url;
+  this.renderData()
+ }
+ componentWillReceiveProps(nextProps){
+   if(this.props.props.selectedShow!==nextProps.props.selectedShow){
+    this.renderData()
+  }
 
-    axios.get(modifyUrl).then(response => {
-       this.props.sendData(response.data)
-      }).catch(error => {
-        console.error('axios error', error); // eslint-disable-line no-console
-      });
- 
- 
-  
  }
 
+renderData(){
+    const url =`https://rickandmortyapi.com/api/character/`;
+    const modifyUrl = this.props.props.selectedShow ? `${url}?name=${this.props.props.selectedShow}`:url;
+  
+      axios.get(modifyUrl).then(response => {
+         this.props.sendData(response.data)
+        }).catch(error => {
+          console.error('axios error', error); // eslint-disable-line no-console
+        });
+  }
+
   render(){
-    return <div className='plp'>
-    <div className="left"><Filters/></div>
-      <div className="right">  
-       <SelectedFilter filterData= {this.props.filters ?this.props.filters.filterList:[]} removeFiterItem={this.props.removeFiterItem}/>
-      <CharactersListComp  {...this.props}/>
-    </div>
-</div>
+    return <Layout  {...this.props}/>
   }
     
   
@@ -50,7 +50,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
    
     loadList: (data) => {
         dispatch(loadCharacterList(data))
-    },
+    }
+    ,
     removeFiterItem:(data)=>{
       dispatch(removeCheckboxFilter(data))
     }
@@ -61,6 +62,7 @@ const mapStateToProps = state => {
   return {
    character:getCharacter(state),
    filters:getFilterLIst(state)
+
   }
 }
 

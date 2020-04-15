@@ -1,6 +1,7 @@
 import React from'react';
+import SearchAndSorting from './SearchAndSorting/SearchAndSorting'
 import './index.css'
-import Filter from './Filter/Filter.jsx'
+
 class CharactersListComp extends React.PureComponent {
 
     constructor(props){
@@ -44,7 +45,7 @@ createdDate(date){
   const dateCreated = new Date(date);
   const dateNow = new Date();
    const  diffYear = dateNow.getFullYear() -dateCreated.getFullYear()
-let createdDateString = ''
+  let createdDateString = ''
    if(diffYear>=0){
     createdDateString = `${diffYear} years ago`
    }
@@ -69,8 +70,8 @@ sortByIdDsc=()=>{
         
        
         return <React.Fragment>
-                <Filter sortingBy={this.sortingBy} filterByName={this.filterByName} loadList={this.props.loadList}/>
-                <ul className='flex-wrapper tiles-list'>
+                <SearchAndSorting sortingBy={this.sortingBy} filterByName={this.filterByName} loadList={this.props.loadList}/>
+                <ul className='flex-wrapper'>
    
                     {character.results.length>0 ? character.results.map((item, key) =>{
                     
@@ -91,7 +92,8 @@ sortByIdDsc=()=>{
                             <li><span>last location </span><span>{item.location && item.location.name}</span></li>
           
                         </ul>
-                    </li>}):<h3>{'Not found any name with this keyword'}</h3>}
+                    </li>}):<h3>{'Not found any name with this keyword'}</h3>
+                    }
                 </ul>
                 </React.Fragment>
               
