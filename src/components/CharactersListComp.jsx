@@ -19,7 +19,6 @@ class CharactersListComp extends React.PureComponent {
   if(this.props!==nextProps){
       const {character} = nextProps
       this.setState({character:character})
-   
   }
   }
   sortingBy(value){
@@ -67,7 +66,7 @@ sortByIdDsc=()=>{
 
     render(){
        const {character} = this.state
-        
+        debugger
        
         return <React.Fragment>
                 <SearchAndSorting sortingBy={this.sortingBy} filterByName={this.filterByName} loadList={this.props.loadList}/>

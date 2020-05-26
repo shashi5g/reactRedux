@@ -11,26 +11,35 @@ class Search extends React.PureComponent {
   constructor(props){
     super(props)
     this.state={
+
     }
+
     this.renderData = this.renderData.bind(this)
   }
  componentDidMount(){
   this.renderData()
  }
  componentWillReceiveProps(nextProps){
-   if(this.props.props.selectedShow!==nextProps.props.selectedShow){
-    this.renderData()
+   const {selectedShow} =  nextProps.props;
+   if(this.props.props.selectedShow!==selectedShow){
+     
+    this.renderData(selectedShow)
   }
 
  }
 
-renderData(){
+renderData(selectedShow){
     const url =`https://rickandmortyapi.com/api/character/`;
-    const modifyUrl = this.props.props.selectedShow ? `${url}?name=${this.props.props.selectedShow}`:url;
+    const modifyUrl = selectedShow ? `${url}?name=${selectedShow}`:`${url}?name=${this.props.props.selectedShow}`;
   
       axios.get(modifyUrl).then(response => {
          this.props.sendData(response.data)
         }).catch(error => {
+          const initialState={
+            info : {},
+            results:[]
+         }
+          this.props.sendData(initialState)
           console.error('axios error', error); // eslint-disable-line no-console
         });
   }

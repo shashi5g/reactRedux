@@ -17,6 +17,7 @@ function App() {
         path="/search/:name"
         component={(props) => {
           const {match} = props;
+          debugger
           const selectedShow = match.params.name ;
           return (
             <AsyncRoute
