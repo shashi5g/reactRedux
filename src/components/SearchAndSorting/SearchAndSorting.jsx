@@ -34,10 +34,15 @@ class SearchAndSorting extends React.PureComponent {
       this.props.sortingBy(event.target.value);
     }
     if (name === "search") {
+
+      
       this.setState({ searchValue: event.target.value });
+
+    
     }
   }
   filterByInput(event) {
+    // console.log("this.state.searchValue",this.state.searchValue)
     event.preventDefault();
     const { searchValue } = this.state;
     this.props.history.push(`/search/${searchValue}`);

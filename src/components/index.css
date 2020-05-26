@@ -9,16 +9,14 @@
   }
   .plp{
       width: 100%;
-      display: flex
+      display: flex;
+      flex-direction: column;
   }
-  .left{
-  
-      width: 20%;
-    padding-right: 50px;
-  }
-  .right{
-      width: 80%;
-  }
+
+  .left,.right {
+    width: 100%;
+   }
+
   .flex-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -33,7 +31,7 @@
   }
   .flex-wrapper > li {
     width: 100%;
-    max-width: 25%;
+    max-width: 50%;
     padding: 10px;
     /* border: 1px solid pink; */
     list-style: none;
@@ -92,4 +90,24 @@ span{
 }
 .card-desc li:last-child{
   border-bottom: 0;
+}
+
+@media only screen and (min-width: 1024px) {
+  .plp{
+    flex-direction: row;
+  }
+  .left{
+  
+    width: 20%;
+    padding-right: 50px;
+  }
+  .right{
+      width: 80%;
+  }
+
+  .flex-wrapper > li {
+ 
+    max-width: 25%;
+  
+  }
 }
