@@ -16,7 +16,7 @@ class CharactersList extends React.PureComponent {
   }
 
   componentDidMount() {
-    debugger
+   
     fetch(`https://rickandmortyapi.com/api/character/`)
     .then(response => response.json())
     .then(data =>{

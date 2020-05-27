@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import axios from 'axios';
 import "./style.css";
 class FilterByAttribute extends React.PureComponent {
   constructor(props) {
@@ -22,18 +23,33 @@ class FilterByAttribute extends React.PureComponent {
       [name]: isChecked,
     });
     const{filterList} = this.props
-    const filterListCont = filterList && filterList.filter((item)=>{ 
+    const filterListCont = filterList && filterList.find((item)=>{ 
       if(item && item.name===name){
         item.isChecked=e.target.checked;
+        return item
       }
-     return item
+     
     } 
     )
     if(e.target.checked){
+      const url =`https://rickandmortyapi.com/api/character/`;
+       const modifyUrl = filterListCont.type ? `${url}?${filterListCont.type.toLowerCase()}=${filterListCont.name}`: url;
+ 
+      axios.get(modifyUrl).then(response => {
+         this.props.sendData(response.data)
+        }).catch(error => {
+          const initialState={
+            info : {},
+            results:[]
+         }
+          this.props.sendData(initialState)
+          console.error('axios error', error); // eslint-disable-line no-console
+        });
       this.props.setCheckbox(filterListCont)
     }
     else{
-      this.props.removeCheckbox(filterList)
+      this.props.removeCheckbox(filterListCont)
+      
     } 
   }
   

@@ -4,14 +4,14 @@ export const setTextFilter = (data) => ({
   data
 })
 
-export const setCheckboxFilter = (name) => ({
+export const setCheckboxFilter = (data) => ({
   type: SET_CHECKBOX_FILTER,
-  name
+  data
 })
 
-export const removeCheckboxFilter = (name) => ({
+export const removeCheckboxFilter = (data) => ({
   type: REMOVE_CHECKBOX_FILTER,
-  name
+  data
 })
 
 export const updateFilterList = (data) => ({
