@@ -3,6 +3,7 @@ import {connect } from 'react-redux'
 import FilterByAttribute from '../../components/FilterByAttribute/FilterByAttribute'
 import { setCheckboxFilter, removeCheckboxFilter} from './action'
 import {getFilterLIst} from './selector'
+import {loadCharacterList} from '../CharacterList/action'
 
 class Filters extends React.PureComponent {
   constructor(props){
@@ -24,7 +25,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     removeCheckbox:(data) =>(
       dispatch(removeCheckboxFilter(data))
-    )
+    ),
+    sendData(data) {
+      dispatch(loadCharacterList(data))
+    },
   }
 }
 const mapStateToProps = state => {

@@ -1,4 +1,5 @@
 import {SET_TEXT_FILTER,SET_CHECKBOX_FILTER,REMOVE_CHECKBOX_FILTER,CLEAR_FILTERS} from './constants'  
+import characterList from '../CharacterList/reducer'
 const checkboxes = 
   [
     
@@ -7,13 +8,13 @@ const checkboxes =
       name: "human",
       key: "human",
       label: "Human",
-      isChecked:true,
+      isChecked:false,
       type:'Species'
     },
     {
-      name: "mythology",
-      key: "mythology",
-      label: "Mythology",
+      name: "mytholog",
+      key: "mytholog",
+      label: "mytholog",
       isChecked:false,
       type:'Species'
     },
@@ -78,27 +79,29 @@ const filtersReducerDefaultState = {
 }
 
 const filters = (state = filtersReducerDefaultState, action) => {
+  debugger
   switch (action.type) {
     case SET_TEXT_FILTER:
       return {
         ...state,
         name: action.name
       };
+
     case SET_CHECKBOX_FILTER:
-      return {
-        ...state,
-        filterList: [...state.filterList, action.data],
-       
-      }
     case REMOVE_CHECKBOX_FILTER:
+     
       return {
         ...state,
-        filterList: [...state.filterList, action.data],
-      }
-    case CLEAR_FILTERS:
-      return {
-        ...state,
-        filterData: []
+        filterList: state.filterList.map((item)=>{
+          
+          if(item.key===action.data.key){
+            debugger
+            return action.data;
+          }
+          debugger
+          return item
+      
+        })
       }
     default:
       return state

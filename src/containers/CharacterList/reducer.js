@@ -14,7 +14,8 @@ const  characterList =(state = initialState, action)=> {
     switch (action.type) {
         case LOAD_CHRACTER_LIST:
             debugger
-          return Object.assign({}, state, action.payload)
+            
+           return  Object.assign({}, state, action.payload)
         case  SORT_BY_PRICE:
              //sort by price
              debugger
