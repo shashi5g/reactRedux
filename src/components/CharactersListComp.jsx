@@ -66,7 +66,7 @@ sortByIdDsc=()=>{
 
     render(){
        const {character} = this.state
-        debugger
+        
        
         return <React.Fragment>
                 <SearchAndSorting sortingBy={this.sortingBy} filterByName={this.filterByName} loadList={this.props.loadList}/>

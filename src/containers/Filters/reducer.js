@@ -79,7 +79,7 @@ const filtersReducerDefaultState = {
 }
 
 const filters = (state = filtersReducerDefaultState, action) => {
-  debugger
+
   switch (action.type) {
     case SET_TEXT_FILTER:
       return {
@@ -95,10 +95,10 @@ const filters = (state = filtersReducerDefaultState, action) => {
         filterList: state.filterList.map((item)=>{
           
           if(item.key===action.data.key){
-            debugger
+          
             return action.data;
           }
-          debugger
+        
           return item
       
         })
